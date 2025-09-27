@@ -1,0 +1,5 @@
+.idea
+/backend/vendor
+/backend/public/images/
+/backend/coverage/
+/frontend/node_modules/

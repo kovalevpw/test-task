@@ -1,0 +1,9 @@
+version: '3.4'
+services:
+  composer:
+    image: composer:2.8.12
+    working_dir: /var/www/backend
+    user: '1000:1000'
+    volumes:
+      - ./backend:/var/www/backend
+    command: bash
