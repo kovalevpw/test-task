@@ -6,7 +6,7 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => require __DIR__ . '/bootstap.php',
     'controllerNamespace' => 'app\commands',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -26,15 +26,17 @@ $config = [
             ],
         ],
         'db' => $db,
+        'queue' => require __DIR__ . '/queue.php',
     ],
     'params' => $params,
-    /*
     'controllerMap' => [
-        'fixture' => [ // Fixture generation command line.
-            'class' => 'yii\faker\FixtureController',
+        'migrate' => [
+            'class' => yii\console\controllers\MigrateController::class,
+            'migrationNamespaces' => [
+                'yii\queue\db\migrations',
+            ],
         ],
     ],
-    */
 ];
 
 if (YII_ENV_DEV) {
